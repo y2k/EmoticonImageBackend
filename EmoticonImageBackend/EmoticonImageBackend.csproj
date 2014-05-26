@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -168,7 +169,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\EmoticonRepository.cs" />
-    <Compile Include="Models\EmticonContext.cs" />
+    <Compile Include="Models\EmoticonContext.cs" />
     <Compile Include="Models\IEmoticonRepository.cs" />
     <Compile Include="Models\Inject\ResolveModule.cs" />
     <Compile Include="Models\Inject\UnityResolver.cs" />

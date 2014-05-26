@@ -6,8 +6,10 @@ using System.Web;
 
 namespace EmoticonImageBackend.Models
 {
-    public class EmticonContext : DbContext
+    public class EmoticonContext : DbContext
     {
+        public EmoticonContext() : base("name=EmoticonContext") { }
+
         public DbSet<Emoticon> Emoticons { get; set; }
 
         public DbSet<Picture> Pictures { get; set; }

@@ -9,6 +9,12 @@ namespace EmoticonImageBackend.Models
     {
         public IEnumerable<string> TestGetAll()
         {
+
+            using (var context = new EmoticonContext())
+            {
+                context.Pictures.Count();
+            }
+
             return new string[] { "test1", "test2", "test3" };
         }
     }
