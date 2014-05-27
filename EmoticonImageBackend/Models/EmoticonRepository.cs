@@ -11,12 +11,26 @@ namespace EmoticonImageBackend.Models
 {
     public class EmoticonRepository : IEmoticonRepository
     {
-        public IEnumerable<string> TestGetAll()
-        {
-            return new string[] { "test1", "test2", "test3" };
-        }
+        private const int EmoticonsPerPage = 32;
 
         #region IEmoticonRepository Members
+
+        public IEnumerable<string> GetImageWithDescription(string filter)
+        {
+            var parts = Regex.Replace(filter.ToUpper(), "[ ,.\\+]+", " ").Split(' ').Where(s => s.Length >= 3).Distinct().ToList();
+
+            using (var context = new EmoticonContext())
+            {
+                return parts
+                    .SelectMany(s => context.Emoticons.Where(a => a.Description.Contains(s)))
+                    .GroupBy(s => s.Id)
+                    .OrderByDescending(s => s.Count())
+                    .Take(EmoticonsPerPage)
+                    .Select(s => s.First().ImageId)
+                    .Select(s => new Uri(HttpContext.Current.Request.Url, "/" + s).AbsoluteUri)
+                    .ToList();
+            }
+        }
 
         public void UploadImageByUrl(string url)
         {

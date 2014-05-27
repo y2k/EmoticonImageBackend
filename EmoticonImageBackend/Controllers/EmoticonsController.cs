@@ -18,11 +18,11 @@ namespace EmoticonImageBackend.Controllers
             _repository = repository;
         }
 
-        // GET api/<controller>
-        public IEnumerable<string> Get(string filter, int toId = 0)
-        {
-            return _repository.TestGetAll().Where(s => s.ToUpper().Contains(filter.ToUpper())).Skip(toId).ToList();
-        }
+        //// GET api/<controller>
+        //public IEnumerable<string> Get(string filter, int toId = 0)
+        //{
+        //    return _repository.TestGetAll().Where(s => s.ToUpper().Contains(filter.ToUpper())).Skip(toId).ToList();
+        //}
 
         //// GET api/<controller>/5
         //public string Get(int id)

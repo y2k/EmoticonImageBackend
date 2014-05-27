@@ -8,26 +8,25 @@ using System.Web.Http;
 
 namespace EmoticonImageBackend.Controllers
 {
-    public class ImageController : ApiController
+    public class ImagesController : ApiController
     {
         private IEmoticonRepository _repository;
 
-        public ImageController(IEmoticonRepository repository)
+        public ImagesController(IEmoticonRepository repository)
         {
             _repository = repository;
         }
 
-        // GET: api/Image
-        public IEnumerable<string> Get()
+        public IEnumerable<string> Get(string filter)
         {
-            return new string[] { "value1", "value2" };
+            return _repository.GetImageWithDescription(filter);
         }
 
-        // GET: api/Image/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //// GET: api/Image/5
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST: api/Image
         public void Post([FromBody]ImageUpdateDataContract value)
@@ -35,15 +34,15 @@ namespace EmoticonImageBackend.Controllers
             _repository.UploadImageByUrl(value.Url);
         }
 
-        // PUT: api/Image/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //// PUT: api/Image/5
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
 
-        // DELETE: api/Image/5
-        public void Delete(int id)
-        {
-        }
+        //// DELETE: api/Image/5
+        //public void Delete(int id)
+        //{
+        //}
 
         public class ImageUpdateDataContract
         {
