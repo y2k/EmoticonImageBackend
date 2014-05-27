@@ -1,6 +1,7 @@
 ﻿using EmoticonImageBackend.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -29,10 +30,11 @@ namespace EmoticonImageBackend.Controllers
         //    return "value";
         //}
 
-        //// POST api/<controller>
-        //public void Post([FromBody]string value)
-        //{
-        //}
+        // POST api/<controller>
+        public void Post(ImageDescription value)
+        {
+            _repository.AddImageDescription(value.ImageId, value.Description);
+        }
 
         //// PUT api/<controller>/5
         //public void Put(int id, [FromBody]string value)
@@ -43,5 +45,14 @@ namespace EmoticonImageBackend.Controllers
         //public void Delete(int id)
         //{
         //}
+
+        public class ImageDescription
+        {
+            [Required]
+            public string ImageId { get; set; }
+
+            [Required]
+            public string Description { get; set; }
+        }
     }
 }

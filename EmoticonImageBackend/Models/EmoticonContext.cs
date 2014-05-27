@@ -12,17 +12,13 @@ namespace EmoticonImageBackend.Models
 
         public DbSet<Emoticon> Emoticons { get; set; }
 
-        public DbSet<Picture> Pictures { get; set; }
-
         public class Emoticon
         {
             public int Id { get; set; }
-            public int PictureId { get; set; }
-        }
 
-        public class Picture
-        {
-            public int Id { get; set; }
+            public string ImageId { get; set; }
+
+            public string Description { get; set; }
         }
     }
 }
