@@ -11,6 +11,7 @@ namespace EmoticonImageBackend.Models.Inject
         public void RegisterAll(UnityContainer container)
         {
             container.RegisterType<IEmoticonRepository, EmoticonRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ICacheModel, CacheModel>(new HierarchicalLifetimeManager());
         }
     }
 }

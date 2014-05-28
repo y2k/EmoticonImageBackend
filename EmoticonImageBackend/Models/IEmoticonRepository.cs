@@ -7,7 +7,7 @@ namespace EmoticonImageBackend.Models
 {
     public interface IEmoticonRepository
     {
-        void UploadImageByUrl(string url);
+        string UploadImageByUrl(string url);
 
         void AddImageDescription(string imageId, string description);
 

@@ -32,7 +32,7 @@ namespace EmoticonImageBackend.Models
             }
         }
 
-        public void UploadImageByUrl(string url)
+        public string UploadImageByUrl(string url)
         {
             if (url == null) throw new NullReferenceException();
 
@@ -40,9 +40,9 @@ namespace EmoticonImageBackend.Models
             Directory.CreateDirectory(Path.GetDirectoryName(path));
             DownloadImageToPath(url, path);
 
+            var hash = ComputeMd5FromFile(path);
             try
             {
-                var hash = ComputeMd5FromFile(path);
                 var dest = Path.Combine(Path.GetDirectoryName(path), hash);
                 File.Move(path, dest);
             }
@@ -50,6 +50,7 @@ namespace EmoticonImageBackend.Models
             {
                 File.Delete(path);
             }
+            return hash;
         }
 
         public void AddImageDescription(string imageId, string description)

@@ -1,4 +1,5 @@
-﻿using EmoticonImageBackend.Models.Inject;
+﻿using EmoticonImageBackend.App_Start;
+using EmoticonImageBackend.Models.Inject;
 using Microsoft.Practices.Unity;
 using System.Web.Http;
 
@@ -10,9 +11,11 @@ namespace EmoticonImageBackend
         {
             // Web API configuration and services
 
-            var container = new UnityContainer();
-            new ResolveModule().RegisterAll(container);
-            config.DependencyResolver = new UnityResolver(container);
+            //var container = new UnityContainer();
+            //new ResolveModule().RegisterAll(container);
+            //config.DependencyResolver = new UnityResolver(container);
+
+            config.DependencyResolver = new UnityResolver(UnityConfig.GetConfiguredContainer());
 
             // Web API routes
             config.MapHttpAttributeRoutes();

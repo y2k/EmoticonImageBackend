@@ -29,9 +29,9 @@ namespace EmoticonImageBackend.Controllers
         //}
 
         // POST: api/Image
-        public void Post([FromBody]ImageUpdateDataContract value)
+        public string Post([FromBody]ImageUpdateDataContract value)
         {
-            _repository.UploadImageByUrl(value.Url);
+            return _repository.UploadImageByUrl(value.Url);
         }
 
         //// PUT: api/Image/5
