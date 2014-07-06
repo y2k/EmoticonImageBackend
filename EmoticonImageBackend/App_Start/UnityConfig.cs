@@ -11,6 +11,7 @@ namespace EmoticonImageBackend.App_Start
     public class UnityConfig
     {
         #region Unity Container
+
         private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
         {
             var container = new UnityContainer();
@@ -25,6 +26,7 @@ namespace EmoticonImageBackend.App_Start
         {
             return container.Value;
         }
+
         #endregion
 
         /// <summary>Registers the type mappings with the Unity container.</summary>

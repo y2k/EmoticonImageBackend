@@ -11,10 +11,6 @@ namespace EmoticonImageBackend
         {
             // Web API configuration and services
 
-            //var container = new UnityContainer();
-            //new ResolveModule().RegisterAll(container);
-            //config.DependencyResolver = new UnityResolver(container);
-
             config.DependencyResolver = new UnityResolver(UnityConfig.GetConfiguredContainer());
 
             // Web API routes
