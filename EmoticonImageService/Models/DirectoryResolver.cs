@@ -14,8 +14,12 @@ namespace EmoticonImageService.Models
         public string GetFullPath(string relativePath)
         {
             if (!relativePath.StartsWith(AppData)) throw new ArgumentException();
-            var path = AppDomain.CurrentDomain.GetData("DataDirectory").ToString();
-            return Path.Combine(path, relativePath.Replace(AppData, ""));
+            return Path.Combine(GetDataDirectory(), relativePath.Replace(AppData, ""));
+        }
+
+        private static string GetDataDirectory()
+        {
+            return AppDomain.CurrentDomain.GetData("DataDirectory").ToString();
         }
     }
 }

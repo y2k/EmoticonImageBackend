@@ -16,11 +16,9 @@ namespace EmoticonImageService.Models
 
         public IEnumerable<string> GetImageWithDescription(Uri baseUrl, string filter)
         {
-            var parts = Regex.Replace(filter.ToUpper(), "[ ,.\\+]+", " ").Split(' ').Where(s => s.Length >= 3).Distinct().ToList();
-
             using (var context = new EmoticonContext())
             {
-                return parts
+                return SplitFilter(filter)
                     .SelectMany(s => context.Emoticons.Where(a => a.Description.Contains(s)))
                     .GroupBy(s => s.Id)
                     .OrderByDescending(s => s.Count())
@@ -29,6 +27,11 @@ namespace EmoticonImageService.Models
                     .Select(s => new Uri(baseUrl + "/" + s).AbsoluteUri)
                     .ToList();
             }
+        }
+
+        static List<string> SplitFilter(string filter)
+        {
+            return Regex.Replace(filter.ToUpper(), "[ ,.\\+]+", " ").Split(' ').Where(s => s.Length >= 3).Distinct().ToList();
         }
 
         public string UploadImageByUrl(string url)

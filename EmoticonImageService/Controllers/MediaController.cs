@@ -6,9 +6,9 @@ namespace EmoticonImageService.Controllers
 {
     public class MediaController : Controller
     {
-        private ICacheModel _repository;
+        private IImageRepository _repository;
 
-        public MediaController(ICacheModel repository)
+        public MediaController(IImageRepository repository)
         {
             _repository = repository;
         }

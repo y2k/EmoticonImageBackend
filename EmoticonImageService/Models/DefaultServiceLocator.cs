@@ -4,7 +4,7 @@ using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Collections.Generic;
 
-namespace EmoticonImageService.Models.Inject
+namespace EmoticonImageService.Models
 {
     public class DefaultServiceLocator : ServiceLocatorImplBase
     {
@@ -13,7 +13,7 @@ namespace EmoticonImageService.Models.Inject
         public void RegisterFor(IServiceCollection services)
         {
             services.AddTransient<IEmoticonRepository, EmoticonRepository>();
-            services.AddTransient<ICacheModel, CacheModel>();
+            services.AddTransient<IImageRepository, ImageRepository>();
         }
 
         public DefaultServiceLocator(params Module[] platformModule)
@@ -50,7 +50,7 @@ namespace EmoticonImageService.Models.Inject
             protected override void Load(ContainerBuilder b)
             {
                 b.RegisterType<EmoticonRepository>().As<IEmoticonRepository>();
-                b.RegisterType<CacheModel>().As<ICacheModel>();
+                b.RegisterType<ImageRepository>().As<IImageRepository>();
             }
         }
 

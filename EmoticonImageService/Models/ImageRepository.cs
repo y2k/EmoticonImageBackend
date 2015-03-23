@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EmoticonImageService.Models
 {
-    public class CacheModel : ICacheModel
+    public class ImageRepository : IImageRepository
     {
         public string Get(string imageId)
         {

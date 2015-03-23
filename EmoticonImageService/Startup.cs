@@ -1,4 +1,4 @@
-﻿using EmoticonImageService.Models.Inject;
+﻿using EmoticonImageService.Models;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Framework.DependencyInjection;

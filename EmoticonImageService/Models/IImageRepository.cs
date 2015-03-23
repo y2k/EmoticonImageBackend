@@ -2,7 +2,7 @@
 
 namespace EmoticonImageService.Models
 {
-    public interface ICacheModel
+    public interface IImageRepository
     {
         string Get(string imageId);
 
