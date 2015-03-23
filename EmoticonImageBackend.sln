@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.22609.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmoticonImageBackend", "EmoticonImageBackend\EmoticonImageBackend.csproj", "{D1D544DE-550B-4FC0-AB27-F724645BE13A}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EmoticonImageService", "EmoticonImageService\EmoticonImageService.kproj", "{7605DF57-3FA0-4CDE-BCE5-1F1712F4147B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D1D544DE-550B-4FC0-AB27-F724645BE13A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1D544DE-550B-4FC0-AB27-F724645BE13A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1D544DE-550B-4FC0-AB27-F724645BE13A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7605DF57-3FA0-4CDE-BCE5-1F1712F4147B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7605DF57-3FA0-4CDE-BCE5-1F1712F4147B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7605DF57-3FA0-4CDE-BCE5-1F1712F4147B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7605DF57-3FA0-4CDE-BCE5-1F1712F4147B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
