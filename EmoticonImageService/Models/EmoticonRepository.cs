@@ -14,7 +14,7 @@ namespace EmoticonImageService.Models
 
         #region IEmoticonRepository Members
 
-        public IEnumerable<string> GetImageWithDescription(string filter)
+        public IEnumerable<string> GetImageWithDescription(Uri baseUrl, string filter)
         {
             var parts = Regex.Replace(filter.ToUpper(), "[ ,.\\+]+", " ").Split(' ').Where(s => s.Length >= 3).Distinct().ToList();
 
@@ -26,7 +26,7 @@ namespace EmoticonImageService.Models
                     .OrderByDescending(s => s.Count())
                     .Take(EmoticonsPerPage)
                     .Select(s => s.First().ImageId)
-                    .Select(s => DirectoryResolver.Instance.CreateAsoluteUri(s).AbsoluteUri)
+                    .Select(s => new Uri(baseUrl + "/" + s).AbsoluteUri)
                     .ToList();
             }
         }

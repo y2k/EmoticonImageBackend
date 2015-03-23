@@ -1,6 +1,7 @@
 ﻿using EmoticonImageService.Models;
 using Microsoft.AspNet.Mvc;
 using System.Collections.Generic;
+using System;
 
 namespace EmoticonImageService.Controllers
 {
@@ -17,34 +18,23 @@ namespace EmoticonImageService.Controllers
         [HttpGet]
         public IEnumerable<string> Get(string filter)
         {
-            return _repository.GetImageWithDescription(filter);
+            return _repository.GetImageWithDescription(GetCurrentUrl(), filter);
         }
 
-        //// GET: api/Image/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        // POST: api/Image
-        public string Post([FromBody]ImageUpdateDataContract value)
+        [HttpPost]
+        public string Post(ImageUpdateDataContract value)
         {
             return _repository.UploadImageByUrl(value.Url);
         }
 
-        //// PUT: api/Image/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
-        //// DELETE: api/Image/5
-        //public void Delete(int id)
-        //{
-        //}
-
         public class ImageUpdateDataContract
         {
             public string Url { get; set; }
+        }
+
+        Uri GetCurrentUrl()
+        {
+            return new Uri(Url.Action("Get", "Media", null, Request.Scheme));
         }
     }
 }

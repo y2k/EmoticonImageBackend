@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -10,12 +8,8 @@ namespace EmoticonImageService.Models
     {
         public string Get(string imageId)
         {
-            //HttpContext.Current.Server.MapPath("~/App_Data/Images/" + imageId);
-            //var path = HttpContext.Current.Server.MapPath("~/App_Data/Images/" + imageId);
-            //return File.Exists(path) ? path : null;
-
-            // FIXME:
-            return null;
+            var path = DirectoryResolver.Instance.GetFullPath("~/App_Data/Images/" + imageId);
+            return File.Exists(path) ? path : null;
         }
 
         public byte[] Square(string url, int size, string format)

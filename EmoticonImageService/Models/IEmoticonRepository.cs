@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace EmoticonImageService.Models
 {
@@ -11,6 +9,6 @@ namespace EmoticonImageService.Models
 
         void AddImageDescription(string imageId, string description);
 
-        IEnumerable<string> GetImageWithDescription(string filter);
+        IEnumerable<string> GetImageWithDescription(Uri baseUrl, string filter);
     }
 }

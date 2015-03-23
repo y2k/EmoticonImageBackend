@@ -4,7 +4,7 @@ namespace EmoticonImageService.Models
 {
     public class EmoticonContext : DbContext
     {
-        public EmoticonContext() : base("name=EmoticonContext") { }
+        public EmoticonContext() : base("Server=(localdb)\\mssqllocaldb;Database=EmoticonImageService-79c2bba9-4caf-497d-9dba-32579bf3bca0;Trusted_Connection=True;MultipleActiveResultSets=true") { }
 
         public DbSet<Emoticon> Emoticons { get; set; }
 

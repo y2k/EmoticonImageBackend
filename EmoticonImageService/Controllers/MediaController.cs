@@ -22,11 +22,7 @@ namespace EmoticonImageService.Controllers
                 var data = _repository.Square(id, size.Value, format);
                 if (data != null)
                 {
-#if !DEBUG
-                    var cache = Response.Cache;
-                    cache.SetCacheability(HttpCacheability.Public);
-                    cache.SetExpires(new DateTime(2525, 1, 1));
-#endif
+                    InitializeCache();
                     return new FileContentResult(data, "image/jpeg");
                 }
             }
@@ -35,11 +31,7 @@ namespace EmoticonImageService.Controllers
                 var data = _repository.Thumbnail(id, width.Value, maxHeight.Value, format);
                 if (data != null)
                 {
-#if !DEBUG
-                    var cache = Response.Cache;
-                    cache.SetCacheability(HttpCacheability.Public);
-                    cache.SetExpires(new DateTime(2525, 1, 1));
-#endif
+                    InitializeCache();
                     return new FileContentResult(data, "image/jpeg");
                 }
             }
@@ -48,11 +40,7 @@ namespace EmoticonImageService.Controllers
                 var path = _repository.Get(id);
                 if (path != null)
                 {
-#if !DEBUG
-                    var cache = Response.Cache;
-                    cache.SetCacheability(HttpCacheability.Public);
-                    cache.SetExpires(new DateTime(2525, 1, 1));
-#endif
+                    InitializeCache();
                     return new FilePathResult(path, "image/jpeg");
                 }
             }
@@ -60,6 +48,15 @@ namespace EmoticonImageService.Controllers
             // TODO:
             //Response.Cache.SetCacheability(HttpCacheability.NoCache);
             return new HttpStatusCodeResult((int)HttpStatusCode.NotFound);
+        }
+
+        void InitializeCache()
+        {
+#if !DEBUG
+                    var cache = Response.Cache;
+                    cache.SetCacheability(HttpCacheability.Public);
+                    cache.SetExpires(new DateTime(2525, 1, 1));
+#endif
         }
     }
 }
