@@ -1,7 +1,9 @@
-﻿using EmoticonImageService.Models;
+﻿using System;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Diagnostics;
 using Microsoft.Framework.DependencyInjection;
+using EmoticonImageService.Models;
 
 namespace EmoticonImageService
 {
@@ -22,7 +24,20 @@ namespace EmoticonImageService
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseStaticFiles();
+			if (string.Equals(env.EnvironmentName, "Development", StringComparison.OrdinalIgnoreCase))
+			{
+				//app.UseBrowserLink();
+				app.UseErrorPage(ErrorPageOptions.ShowAll);
+//				app.UseDatabaseErrorPage(DatabaseErrorPageOptions.ShowAll);
+			}
+			else
+			{
+				// Add Error handling middleware which catches all application specific errors and
+				// send the request to the following path or controller action.
+				app.UseErrorHandler("/Home/Error");
+			}
+
+			app.UseStaticFiles();
             // Add MVC to the request pipeline.
             app.UseMvc(routes =>
             {

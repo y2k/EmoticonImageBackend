@@ -11,6 +11,8 @@
 		"Autofac": "3.5.2",
 		"EntityFramework": "6.1.3",
 
+		"System.Data.SQLite.EF6": "1.0.96",
+
 		"Microsoft.AspNet.Server.IIS": "1.0.0-beta3",
 		"Microsoft.AspNet.Mvc": "6.0.0-beta3",
 		"Microsoft.AspNet.StaticFiles": "1.0.0-beta3",
